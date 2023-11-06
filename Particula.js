@@ -1,5 +1,17 @@
 class Particula {
 	constructor() {
+		this.loca = random(100) < 1 ? true : false;
+
+		if (this.loca) {
+			this.color = color(255, 255, random(100, 255), 100);
+			this.vel = createVector(0, random(2, 15));
+			this.vel.rotate(random(360));
+		} else {
+			this.color = color(255, 0, random(100, 255), 100);
+			this.vel = createVector(0, random(1, 6));
+			this.vel.rotate(random(-20, 20));
+		}
+
 		this.tamanoInicial = random(10, 50);
 		this.tamano = this.tamanoInicial;
 		this.estaMuerta = false;
@@ -8,11 +20,7 @@ class Particula {
 
 		this.pos = createVector(mouseX, mouseY);
 
-		this.vel = createVector(0, random(1, 6));
-		this.vel.rotate(random(-20, 20));
-
 		this.g = createVector(0, -0.05);
-		this.color = color(255, 0, random(100, 255), 100);
 	}
 	// Método ==> method update
 	actualizar() {
